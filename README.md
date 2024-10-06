@@ -6,17 +6,17 @@ This template contains an example .NET 8 [Blazor WebAssembly](https://docs.micro
 
 1. Create a repository from the [GitHub template](https://docs.github.com/en/enterprise/2.22/user/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) and then clone it locally to your machine.
 
-1. In the **Api** folder, copy `local.settings.example.json` to `local.settings.json`
+2. In the **Api** folder, copy `local.settings.example.json` to `local.settings.json`
 
 ### Visual Studio Code with Azure Static Web Apps CLI for a better development experience (Optional)
 
 1. Install (or update) the [Azure Static Web Apps CLI](https://www.npmjs.com/package/@azure/static-web-apps-cli) and [Azure Functions Core Tools CLI](https://www.npmjs.com/package/azure-functions-core-tools).
 
-1. Open the folder in Visual Studio Code.
+2. Open the folder in Visual Studio Code.
 
-1. Delete file `Client/wwwroot/appsettings.Development.json`
+3. Delete file `Client/wwwroot/appsettings.Development.json`
 
-1. In the VS Code terminal, run the following command to start the Static Web Apps CLI, along with the Blazor WebAssembly client application and the Functions API app:
+4. In the VS Code terminal, run the following command to start the Static Web Apps CLI, along with the Blazor WebAssembly client application and the Functions API app:
 
     In the Client folder, run:
     ```bash
@@ -35,9 +35,9 @@ This template contains an example .NET 8 [Blazor WebAssembly](https://docs.micro
 
     The Static Web Apps CLI (`swa`) starts a proxy on port 4280 that will forward static site requests to the Blazor server on port 5000 and requests to the `/api` endpoint to the Functions server. 
 
-1. Open a browser and navigate to the Static Web Apps CLI's address at `http://localhost:4280`. You'll be able to access both the client application and the Functions API app in this single address. When you navigate to the "Fetch Data" page, you'll see the data returned by the Functions API app.
+5. Open a browser and navigate to the Static Web Apps CLI's address at `http://localhost:4280`. You'll be able to access both the client application and the Functions API app in this single address. When you navigate to the "Fetch Data" page, you'll see the data returned by the Functions API app.
 
-1. Enter Ctrl-C to stop the Static Web Apps CLI.
+6. Enter Ctrl-C to stop the Static Web Apps CLI.
 
 ## Template Structure
 
