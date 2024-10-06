@@ -8,21 +8,6 @@ This template contains an example .NET 8 [Blazor WebAssembly](https://docs.micro
 
 1. In the **Api** folder, copy `local.settings.example.json` to `local.settings.json`
 
-1. Continue using either Visual Studio or Visual Studio Code.
-
-### Visual Studio 2022
-
-Once you clone the project, open the solution in the latest release of [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) with the Azure workload installed, and follow these steps:
-
-1. Right-click on the solution and select **Configure Startup Projects...**.
-
-1. Select **Multiple startup projects** and set the following actions for each project:
-    - *Api* - **Start**
-    - *Client* - **Start**
-    - *Shared* - None
-
-1. Press **F5** to launch both the client application and the Functions API app.
-
 ### Visual Studio Code with Azure Static Web Apps CLI for a better development experience (Optional)
 
 1. Install (or update) the [Azure Static Web Apps CLI](https://www.npmjs.com/package/@azure/static-web-apps-cli) and [Azure Functions Core Tools CLI](https://www.npmjs.com/package/azure-functions-core-tools).
