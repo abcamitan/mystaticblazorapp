@@ -2,36 +2,26 @@
 
 This template contains an example .NET 8 [Blazor WebAssembly](https://docs.microsoft.com/aspnet/core/blazor/?view=aspnetcore-6.0#blazor-webassembly) client application, a .NET 8 C# [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview), and a C# class library with shared code.
 
+## Pre-Requisite
+1. Install [Visual Studio Code](https://code.visualstudio.com/download)
+2. Install [.Net 8 SDK](https://dotnet.microsoft.com/download)
+3. Install [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
+4. Install [AZ Powershell Module](https://learn.microsoft.com/en-us/powershell/azure/install-azps-windows?tabs=powershell&pivots=windows-psgallery)
+5. Register new [Azure Account](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+6. Install [Azure Static Web Apps CLI](https://www.npmjs.com/package/@azure/static-web-apps-cli)
+7. Install [Azure Function Core Tools](https://go.microsoft.com/fwlink/?linkid=2174087)
+8. Install Storage Emulator [Azurite](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azurite?tabs=visual-studio-code%2Cblob-storage#install-azurite) extension.
+
 ## Getting Started
 
-1. Create a repository from the [GitHub template](https://docs.github.com/en/enterprise/2.22/user/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) and then clone it locally to your machine.
-
-1. In the **Api** folder, copy `local.settings.example.json` to `local.settings.json`
-
-1. Continue using either Visual Studio or Visual Studio Code.
-
-### Visual Studio 2022
-
-Once you clone the project, open the solution in the latest release of [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) with the Azure workload installed, and follow these steps:
-
-1. Right-click on the solution and select **Configure Startup Projects...**.
-
-1. Select **Multiple startup projects** and set the following actions for each project:
-    - *Api* - **Start**
-    - *Client* - **Start**
-    - *Shared* - None
-
-1. Press **F5** to launch both the client application and the Functions API app.
+1. Start Azurite by going to command pallete (Ctrl + Shift + P), find and choose Azurite: Start and then press Enter.
+2. In the **Api** folder, copy `local.settings.example.json` to `local.settings.json`
 
 ### Visual Studio Code with Azure Static Web Apps CLI for a better development experience (Optional)
 
-1. Install (or update) the [Azure Static Web Apps CLI](https://www.npmjs.com/package/@azure/static-web-apps-cli) and [Azure Functions Core Tools CLI](https://www.npmjs.com/package/azure-functions-core-tools).
-
 1. Open the folder in Visual Studio Code.
 
-1. Delete file `Client/wwwroot/appsettings.Development.json`
-
-1. In the VS Code terminal, run the following command to start the Static Web Apps CLI, along with the Blazor WebAssembly client application and the Functions API app:
+2. In the VS Code terminal, run the following command to start the Static Web Apps CLI, along with the Blazor WebAssembly client application and the Functions API app:
 
     In the Client folder, run:
     ```bash
@@ -50,9 +40,9 @@ Once you clone the project, open the solution in the latest release of [Visual S
 
     The Static Web Apps CLI (`swa`) starts a proxy on port 4280 that will forward static site requests to the Blazor server on port 5000 and requests to the `/api` endpoint to the Functions server. 
 
-1. Open a browser and navigate to the Static Web Apps CLI's address at `http://localhost:4280`. You'll be able to access both the client application and the Functions API app in this single address. When you navigate to the "Fetch Data" page, you'll see the data returned by the Functions API app.
+3. Open a browser and navigate to the Static Web Apps CLI's address at `http://localhost:4280`. You'll be able to access both the client application and the Functions API app in this single address. When you navigate to the "Fetch Data" page, you'll see the data returned by the Functions API app.
 
-1. Enter Ctrl-C to stop the Static Web Apps CLI.
+4. Enter Ctrl-C to stop the Static Web Apps CLI.
 
 ## Template Structure
 
