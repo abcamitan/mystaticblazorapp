@@ -52,4 +52,8 @@ This template contains an example .NET 8 [Blazor WebAssembly](https://docs.micro
 
 ## Deploy to Azure Static Web Apps
 
-This application can be deployed to [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps), to learn how, check out [our quickstart guide](https://aka.ms/blazor-swa/quickstart).
+This application can be deployed to (Api) Azure Function and (Client) Azure Storage and CDN.
+
+Run below via Powershell: 
+
+    .\infra\script\deploy.ps1
