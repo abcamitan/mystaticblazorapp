@@ -4,6 +4,7 @@ param (
     [string]$location = "westeurope",
     [string]$frontendProjectPath = "./Client/Client.csproj",
     [string]$backendProjectPath = "./Api/Api.csproj",
+    [string]$sharedProjectPath = "./Shared/Shared.csproj",
     [string]$buildOutputPath = "./Api/bin/Release/output",
     [string]$webbuildOutputPath = "./Client/bin/Release/publish",
     [string]$principalId = "2915fc04-7324-45c1-8be7-e1f7bd2befc9",
@@ -46,6 +47,7 @@ az deployment group create --resource-group $resourceGroupName --template-file "
 
 # Build the API app
 & dotnet publish $backendProjectPath -c Release -o "$($buildOutputPath)\publish"
+& dotnet publish $sharedProjectPath -c Release -o "$($buildOutputPath)\publish"
 
 # Package path for the zip file
 $packagePath = "$($buildOutputPath)\package"
@@ -79,6 +81,7 @@ Start-Sleep -Seconds 30
 
 # Build the Blazor WebAssembly app
 & dotnet publish $frontendProjectPath -c Release -o $webbuildOutputPath -p:CompressionEnabled=false
+& dotnet publish $sharedProjectPath -c Release -o $webbuildOutputPath
 
 # Get the storage account key
 $storageAccountKey = (az storage account keys list --resource-group $resourceGroupName --account-name $storageAccountName --query "[0].value" --output tsv)
