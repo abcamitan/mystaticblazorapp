@@ -83,6 +83,9 @@ Start-Sleep -Seconds 30
 & dotnet publish $frontendProjectPath -c Release -o $webbuildOutputPath -p:CompressionEnabled=false
 & dotnet publish $sharedProjectPath -c Release -o $webbuildOutputPath
 
+# Copy appsettings json file to the publish directory
+Copy-Item -Path "./Client/settings/appsettings.$($environment).json" -Destination "$($webbuildOutputPath)/wwwroot/appsettings.json" -Force
+
 # Get the storage account key
 $storageAccountKey = (az storage account keys list --resource-group $resourceGroupName --account-name $storageAccountName --query "[0].value" --output tsv)
 
