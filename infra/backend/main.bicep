@@ -4,6 +4,7 @@ param apiFunctionAppName string
 param location string = resourceGroup().location
 param appInsightName string
 param keyVaultName string
+param cdnEndpointName string
 
 module appInsightDeploy 'module/appInsight.bicep' = {
   name: appInsightName
@@ -30,6 +31,9 @@ module functionAppDeploy 'module/azureFunction.bicep' = {
     apiFunctionAppName: apiFunctionAppName
     keyVaultName: keyVaultName
     serviceName: serviceName
+    allowedOrigins: [
+      'https://${cdnEndpointName}.azureedge.net'
+    ]
   }
   dependsOn: [
     appInsightDeploy
