@@ -21,7 +21,9 @@ Backend is developed using Azure Function.
 1. Start Azurite by going to command pallete (Ctrl + Shift + P), find and choose Azurite: Start and then press Enter.
 2. In the **Api** folder, copy `local.settings.example.json` to `local.settings.json`
 
-### Visual Studio Code with Azure Static Web Apps CLI for a better development experience (Optional)
+### How to run Blazor app locally via Visual Studio Code 
+
+You can run the app locally either via Debug mode or manually using steps below.
 
 1. Open the folder in Visual Studio Code.
 
@@ -68,3 +70,7 @@ This application can be deployed to (Api) Azure Function and (Client) Azure Stor
 Run below via Powershell: 
 
     .\infra\script\deploy.ps1
+
+### Access the Blazor App via CDN
+
+After deployment above and make sure no errors. Open Azure Portal, locate your resource group and CDN Endpoint, you can click the Endpoint hostname shown in the overview page to access the Blazor App.
