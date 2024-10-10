@@ -7,6 +7,7 @@ param (
     [string]$sharedProjectPath = "./Shared/Shared.csproj",
     [string]$buildOutputPath = "./Api/bin/Release/output",
     [string]$webbuildOutputPath = "./Client/bin/Release/publish",
+    # The principalId and principalType are used to grant the User access to the CDN storage account
     [string]$principalId = "2915fc04-7324-45c1-8be7-e1f7bd2befc9",
     [string]$principalType = "Group"
 )
@@ -43,7 +44,7 @@ if ($registrationStatus -ne "Registered") {
 }
 
 # deploy the backend infrastructure
-az deployment group create --resource-group $resourceGroupName --template-file "./infra/backend/main.bicep" --parameters serviceName=$serviceName environment=$environment apiFunctionAppName=$apiFunctionAppName appInsightName=$appInsightName keyVaultName=$keyVaultName
+az deployment group create --resource-group $resourceGroupName --template-file "./infra/backend/main.bicep" --parameters serviceName=$serviceName environment=$environment apiFunctionAppName=$apiFunctionAppName appInsightName=$appInsightName keyVaultName=$keyVaultName cdnEndpointName=$cdnEndpointName
 
 # Build the API app
 & dotnet publish $backendProjectPath -c Release -o "$($buildOutputPath)\publish"
@@ -71,7 +72,7 @@ Start-Sleep -Seconds 30
 az functionapp deployment source config-zip -g $resourceGroupName -n $apiFunctionAppName --src $zipFilePath
 
 # deploy the frontend infrastructure
-az deployment group create --resource-group $resourceGroupName --template-file "./infra/frontend/main.bicep" --parameters serviceName=$serviceName environment=$environment storageAccountName=$storageAccountName cdnProfileName=$cdnProfileName cdnEndpointName=$cdnEndpointName principalId=$principalId principalType=$principalType
+az deployment group create --resource-group $resourceGroupName --template-file "./infra/frontend/main.bicep" --parameters environment=$environment storageAccountName=$storageAccountName cdnProfileName=$cdnProfileName cdnEndpointName=$cdnEndpointName principalId=$principalId principalType=$principalType apiFunctionAppName=$apiFunctionAppName
 
 # Enable the static website feature on the storage account
 az storage blob service-properties update --static-website --index-document "index.html" --404-document "index.html" --account-name $storageAccountName

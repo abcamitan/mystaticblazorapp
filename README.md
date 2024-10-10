@@ -1,6 +1,10 @@
-# Blazor Starter Application
+# Blazor WASM in Azure Storage + CDN and Backend in Azure Function App
 
-This template contains an example .NET 8 [Blazor WebAssembly](https://docs.microsoft.com/aspnet/core/blazor/?view=aspnetcore-6.0#blazor-webassembly) client application, a .NET 8 C# [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview), and a C# class library with shared code.
+This repo created from .NET 8 [Blazor WebAssembly](https://docs.microsoft.com/aspnet/core/blazor/?view=aspnetcore-6.0#blazor-webassembly) client application.
+
+Frontend is developed using Blazor Web Assembly and deploy via Azure CDN.
+
+Backend is developed using Azure Function.
 
 ## Pre-Requisite
 1. Install [Visual Studio Code](https://code.visualstudio.com/download)
@@ -44,11 +48,18 @@ This template contains an example .NET 8 [Blazor WebAssembly](https://docs.micro
 
 4. Enter Ctrl-C to stop the Static Web Apps CLI.
 
-## Template Structure
+## Application Structure
 
-- **Client**: The Blazor WebAssembly sample application
-- **Api**: A C# Azure Functions API, which the Blazor application will call
+- **Client**: The Blazor WebAssembly application
+- **Api**: A C# Azure Functions API, in which serves as backend
 - **Shared**: A C# class library with a shared data model between the Blazor and Functions application
+
+## Security Setup
+
+1. Using SPA / MSAL authentication (OAuth2 / OpenID) for frontend.
+2. Using Managed Identities and RBAC role access for CDN to access the Azure Function APIs. Configured via bicep file.
+3. Added Network ACLs to allow only CDN and My Home Ip address to access Azure Function APIs. Configured via bicep file. Note: You can update the My Home Ip address inside the azureFunction.bicep file.
+4. Added CORS to allow only request from the CDN endpoint URL. Configured via bicep file.
 
 ## Deploy to Azure Static Web Apps
 
